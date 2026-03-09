@@ -8,9 +8,13 @@
 
     <scroll-view class="detail-content" scroll-y>
       <!-- 位置信息 -->
-      <view class="section">
+      <view class="section location-section">
         <text class="section-title">📍 位置</text>
-        <text class="section-text">{{ roomInfo.location }}</text>
+        <text class="location-text">{{ roomInfo.location }}</text>
+        <view class="map-preview" @tap="openLocation">
+          <text class="map-icon">🗺️</text>
+          <text class="map-text">点击打开地图导航</text>
+        </view>
       </view>
 
       <!-- 交通信息 -->
@@ -94,6 +98,9 @@ import { ref } from 'vue'
 
 const roomInfo = ref({
   location: 'xx区xx街道xx号',
+  latitude: 39.90469,
+  longitude: 116.40717,
+  name: '温馨民宿',
   traffic: [
     { icon: '🚇', text: '地铁1号线 xx站 500米' },
     { icon: '🚌', text: '公交xx路 xx站' },
@@ -136,6 +143,15 @@ const previewImage = (images, index) => {
   uni.previewImage({
     urls: images,
     current: index
+  })
+}
+
+const openLocation = () => {
+  uni.openLocation({
+    latitude: roomInfo.value.latitude,
+    longitude: roomInfo.value.longitude,
+    name: roomInfo.value.name,
+    address: roomInfo.value.location
   })
 }
 
@@ -204,6 +220,38 @@ const openPurchaseLink = () => {
   font-size: 28rpx;
   color: #666666;
   line-height: 1.8;
+}
+
+.location-section {
+  padding: 40rpx;
+}
+
+.location-text {
+  display: block;
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.8;
+  margin-bottom: 30rpx;
+}
+
+.map-preview {
+  height: 300rpx;
+  background: linear-gradient(135deg, rgba(232, 168, 104, 0.1) 0%, rgba(212, 149, 90, 0.1) 100%);
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-icon {
+  font-size: 64rpx;
+  margin-bottom: 16rpx;
+}
+
+.map-text {
+  font-size: 28rpx;
+  color: #E8A868;
 }
 
 .traffic-list {
