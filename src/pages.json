@@ -41,20 +41,20 @@
 			{
 				"pagePath": "pages/home/home",
 				"text": "首页",
-				"iconPath": "static/tab-home.png",
-				"selectedIconPath": "static/tab-home-active.png"
+				"iconPath": "https://img.icons8.com/ios-filled/50/999999/home.png",
+				"selectedIconPath": "https://img.icons8.com/ios-filled/50/E8A868/home.png"
 			},
 			{
 				"pagePath": "pages/rooms/rooms",
 				"text": "房源详情",
-				"iconPath": "static/tab-room.png",
-				"selectedIconPath": "static/tab-room-active.png"
+				"iconPath": "https://img.icons8.com/ios-filled/50/999999/key.png",
+				"selectedIconPath": "https://img.icons8.com/ios-filled/50/E8A868/key.png"
 			},
 			{
 				"pagePath": "pages/contact/contact",
 				"text": "联系",
-				"iconPath": "static/tab-contact.png",
-				"selectedIconPath": "static/tab-contact-active.png"
+				"iconPath": "https://img.icons8.com/ios-filled/50/999999/phone.png",
+				"selectedIconPath": "https://img.icons8.com/ios-filled/50/E8A868/phone.png"
 			}
 		]
 	}
