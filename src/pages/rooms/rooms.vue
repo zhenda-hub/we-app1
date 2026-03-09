@@ -7,25 +7,28 @@
     </view>
 
     <scroll-view class="detail-content" scroll-y>
-      <!-- 位置信息 -->
-      <view class="section location-section">
-        <text class="section-title">📍 位置</text>
-        <text class="location-text">{{ roomInfo.location }}</text>
-        <view class="map-preview" @tap="openLocation">
+      <!-- 位置导航 -->
+      <view class="section map-section">
+        <view class="map-header">
+          <text class="map-title">位置导航</text>
+          <text class="map-subtitle">点击地图查看详细位置</text>
+        </view>
+        <view class="map-placeholder" @tap="openLocation">
           <text class="map-icon">🗺️</text>
-          <text class="map-text">点击打开地图导航</text>
+          <text class="map-text">点击打开地图</text>
         </view>
       </view>
 
-      <!-- 交通信息 -->
-      <view class="section">
-        <text class="section-title">🚇 交通</text>
-        <view class="traffic-list">
-          <view class="traffic-item" v-for="(item, index) in roomInfo.traffic" :key="index">
-            <view class="traffic-icon-wrapper">
-              <text class="traffic-icon">{{ item.icon }}</text>
-            </view>
-            <text class="traffic-text">{{ item.text }}</text>
+      <!-- 交通指南 -->
+      <view class="section traffic-section">
+        <view class="traffic-header">
+          <text class="traffic-title">交通指南</text>
+        </view>
+        <view class="traffic-item" v-for="(item, index) in roomInfo.traffic" :key="index">
+          <view class="traffic-icon">{{ item.icon }}</view>
+          <view class="traffic-content">
+            <text class="traffic-name">{{ item.name }}</text>
+            <text class="traffic-desc">{{ item.desc }}</text>
           </view>
         </view>
       </view>
@@ -102,9 +105,9 @@ const roomInfo = ref({
   longitude: 116.40717,
   name: '温馨民宿',
   traffic: [
-    { icon: '🚇', text: '地铁1号线 xx站 500米' },
-    { icon: '🚌', text: '公交xx路 xx站' },
-    { icon: '✈️', text: '距离机场约30公里' },
+    { icon: '🚇', name: '地铁', desc: '距离XX地铁站约500米，步行5分钟' },
+    { icon: '🚌', name: '公交', desc: '多条公交线路可达，XX路站下车' },
+    { icon: '✈️', name: '机场', desc: '距离机场约30公里，打车约40分钟' },
   ],
   advantages: [
     '近地铁',
@@ -222,22 +225,33 @@ const openPurchaseLink = () => {
   line-height: 1.8;
 }
 
-.location-section {
-  padding: 40rpx;
+// 地图预览样式
+.map-section {
+  padding: 0;
+  overflow: hidden;
 }
 
-.location-text {
+.map-header {
+  padding: 40rpx 40rpx 30rpx;
+}
+
+.map-title {
   display: block;
-  font-size: 28rpx;
-  color: #666666;
-  line-height: 1.8;
-  margin-bottom: 30rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #5D4E37;
+  margin-bottom: 8rpx;
 }
 
-.map-preview {
+.map-subtitle {
+  display: block;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.map-placeholder {
   height: 300rpx;
   background: linear-gradient(135deg, rgba(232, 168, 104, 0.1) 0%, rgba(212, 149, 90, 0.1) 100%);
-  border-radius: 16rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -254,39 +268,60 @@ const openPurchaseLink = () => {
   color: #E8A868;
 }
 
-.traffic-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24rpx;
+// 交通指南样式
+.traffic-section {
+  padding: 40rpx;
+}
+
+.traffic-header {
+  margin-bottom: 30rpx;
+}
+
+.traffic-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #5D4E37;
 }
 
 .traffic-item {
   display: flex;
-  align-items: center;
-  gap: 20rpx;
-  padding: 24rpx;
-  background: rgba(232, 168, 104, 0.08);
-  border-radius: 16rpx;
+  align-items: flex-start;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
 }
 
-.traffic-icon-wrapper {
-  width: 64rpx;
-  height: 64rpx;
-  background: #FFFFFF;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.traffic-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.traffic-item:first-child {
+  padding-top: 0;
 }
 
 .traffic-icon {
-  font-size: 32rpx;
+  font-size: 40rpx;
+  margin-right: 24rpx;
+  margin-top: 4rpx;
 }
 
-.traffic-text {
+.traffic-content {
   flex: 1;
-  font-size: 28rpx;
+}
+
+.traffic-name {
+  display: block;
+  font-size: 30rpx;
   color: #5D4E37;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.traffic-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #999999;
+  line-height: 1.6;
 }
 
 .advantage-tags {
