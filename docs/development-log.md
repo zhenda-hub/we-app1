@@ -94,6 +94,76 @@ npm run dev:mp-weixin
 npm run build:mp-weixin
 ```
 
+### H5 浏览器调试
+
+```bash
+# 启动 H5 开发模式（用于浏览器调试）
+npm run dev:h5
+```
+
+## 调试命令
+
+### 服务器管理
+
+```bash
+# 查看占用端口的进程
+lsof -i :5173 -i :5174 -i :5175
+
+# 停止所有开发服务器
+pkill -f "npm run dev"
+
+# 强制停止指定端口的进程
+kill <PID>
+```
+
+### 图片资源调试
+
+```bash
+# 测试图片 HTTP 状态码
+curl -s -o /dev/null -w "%{http_code}\n" "http://localhost:5173/static/images/floor1/floor1-01.jpg"
+
+# 验证图片内容
+curl -s "http://localhost:5173/static/images/floor1/floor1-01.jpg" -o /tmp/test.jpg && file /tmp/test.jpg
+
+# 测试中文文件名问题
+curl -s "http://localhost:5173/static/images/bathroom/中文文件名.jpg" -o /tmp/test-chinese.jpg && head -3 /tmp/test-chinese.jpg
+```
+
+### Git 调试
+
+```bash
+# 查看当前分支
+git branch --show-current
+
+# 查看提交历史
+git log --oneline -10
+
+# 查看文件改动
+git status
+git diff
+
+# 重置到指定提交（慎用）
+git reset --hard <commit-hash>
+```
+
+### 文件操作
+
+```bash
+# 批量重命名图片文件（示例）
+cd src/static/images/floor1
+counter=1
+for file in *.jpg; do
+  mv "$file" "floor1-$(printf '%02d' $counter).jpg"
+  ((counter++))
+done
+
+# 统计文件数量
+ls -1 | wc -l
+
+# 查看文件大小
+ls -lh
+```
+
 ## 微信开发者工具使用
 
 1. 打开微信开发者工具
