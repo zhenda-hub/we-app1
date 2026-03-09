@@ -5,6 +5,5 @@ export default defineConfig({
   plugins: [
     uni(),
   ],
-  publicDir: 'public',
   assetsInclude: ['**/*.jpg', '**/*.png', '**/*.mp4'],
 })
