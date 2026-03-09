@@ -2,87 +2,86 @@
   <view class="home-page">
     <!-- 顶部欢迎区 -->
     <view class="welcome-section">
-      <text class="welcome-title">欢迎来到温馨民宿</text>
-      <text class="welcome-subtitle">舒适的住宿，美好的体验</text>
+      <text class="greeting">欢迎光临</text>
+      <text class="subtitle">温馨舒适的家园，优质房源值得拥有</text>
     </view>
 
-    <!-- 民宿介绍卡片 -->
-    <view class="intro-card">
-      <image class="intro-image" src="/static/images/banner/微信图片_20260305182440_128_116.jpg" mode="aspectFill"></image>
-      <view class="intro-content">
-        <text class="intro-heading">关于我们</text>
-        <text class="intro-desc">
-          我们的民宿位于交通便利的地段，周边配套设施齐全。为您提供温馨舒适的住宿环境，让您在旅途中感受到家的温暖。
-        </text>
+    <!-- 大图轮播 -->
+    <view class="banner-section">
+      <swiper
+        class="banner-swiper"
+        :indicator-dots="true"
+        :autoplay="true"
+        :interval="5000"
+        :duration="500"
+        indicator-color="rgba(255, 255, 255, 0.4)"
+        indicator-active-color="#E8A868"
+      >
+        <swiper-item v-for="(img, index) in bannerImages" :key="index">
+          <image class="banner-image" :src="img" mode="aspectFill" @tap="previewImage(bannerImages, index)" />
+        </swiper-item>
+      </swiper>
+    </view>
+
+    <!-- 特色标签 -->
+    <view class="features-section">
+      <view class="feature-tag" v-for="(tag, index) in features" :key="index">
+        <text class="tag-icon">{{ tag.icon }}</text>
+        <text class="tag-text">{{ tag.text }}</text>
       </view>
     </view>
 
-    <!-- 房型预览 -->
-    <view class="rooms-preview">
-      <view class="section-header">
-        <text class="section-title">房型介绍</text>
-        <text class="section-more" @tap="goToRooms">查看全部 →</text>
-      </view>
-
-      <view class="room-card" @tap="goToRooms">
-        <image class="room-image" src="/static/images/floor1/微信图片_20260305182440_128_116.jpg" mode="aspectFill"></image>
-        <view class="room-info">
-          <text class="room-name">1楼房型</text>
-          <text class="room-desc">宽敞明亮，独立卫浴</text>
-          <view class="room-tags">
-            <text class="room-tag">独卫</text>
-            <text class="room-tag">WiFi</text>
-          </view>
+    <!-- 快捷入口 -->
+    <view class="quick-links-section">
+      <view class="link-card" @tap="goToRooms">
+        <view class="link-icon-wrapper">
+          <text class="link-icon">🏠</text>
         </view>
-      </view>
-
-      <view class="room-card" @tap="goToRooms">
-        <image class="room-image" src="/static/images/floor2/微信图片_20260305182548_137_116.jpg" mode="aspectFill"></image>
-        <view class="room-info">
-          <text class="room-name">2楼房型</text>
-          <text class="room-desc">安静舒适，视野开阔</text>
-          <view class="room-tags">
-            <text class="room-tag">独卫</text>
-            <text class="room-tag">阳台</text>
-          </view>
+        <view class="link-content">
+          <text class="link-title">房源详情</text>
+          <text class="link-desc">查看位置、设施等信息</text>
         </view>
-      </view>
-    </view>
-
-    <!-- 特色设施 -->
-    <view class="facilities-section">
-      <view class="section-header">
-        <text class="section-title">特色设施</text>
+        <text class="link-arrow">→</text>
       </view>
 
-      <view class="facilities-grid">
-        <view class="facility-item" v-for="(item, index) in facilities" :key="index">
-          <text class="facility-icon">{{ item.icon }}</text>
-          <text class="facility-name">{{ item.name }}</text>
+      <view class="link-card" @tap="goToContact">
+        <view class="link-icon-wrapper">
+          <text class="link-icon">📞</text>
         </view>
-      </view>
-    </view>
-
-    <!-- 联系引导 -->
-    <view class="contact-section">
-      <view class="contact-card" @tap="goToContact">
-        <text class="contact-title">联系我们</text>
-        <text class="contact-desc">如有任何问题，欢迎随时联系</text>
-        <text class="contact-btn">立即咨询 →</text>
+        <view class="link-content">
+          <text class="link-title">联系我们</text>
+          <text class="link-desc">获取更多咨询</text>
+        </view>
+        <text class="link-arrow">→</text>
       </view>
     </view>
   </view>
 </template>
 
 <script setup>
-const facilities = ref([
-  { icon: '📶', name: '免费WiFi' },
-  { icon: '🚿', name: '独立卫浴' },
-  { icon: '❄️', name: '空调' },
-  { icon: '🍳', name: '可做饭' },
-  { icon: '🧹', name: '每日清洁' },
-  { icon: '🚇', name: '近地铁' },
+import { ref } from 'vue'
+
+const bannerImages = ref([
+  '/static/images/banner/微信图片_20260305182810_160_116.jpg',
+  '/static/images/banner/微信图片_20260305182812_161_116.jpg',
+  '/static/images/banner/微信图片_20260305182558_142_116.jpg',
+  '/static/images/banner/微信图片_20260305182602_144_116.jpg',
+  '/static/images/banner/微信图片_20260305182800_155_116.jpg',
 ])
+
+const features = ref([
+  { icon: '🚇', text: '近地铁' },
+  { icon: '🚿', text: '独立卫浴' },
+  { icon: '🍳', text: '可做饭' },
+  { icon: '📶', text: '免费WiFi' },
+])
+
+const previewImage = (images, index) => {
+  uni.previewImage({
+    urls: images,
+    current: index
+  })
+}
 
 const goToRooms = () => {
   uni.switchTab({
@@ -105,187 +104,126 @@ const goToContact = () => {
 }
 
 .welcome-section {
-  padding: 60rpx 40rpx 40rpx;
+  padding: 60rpx 40rpx 50rpx;
   text-align: center;
 }
 
-.welcome-title {
+.greeting {
   display: block;
-  font-size: 44rpx;
-  font-weight: 600;
-  color: #5D4E37;
-  margin-bottom: 16rpx;
-}
-
-.welcome-subtitle {
-  display: block;
-  font-size: 28rpx;
-  color: #999999;
-}
-
-.intro-card {
-  margin: 0 30rpx 40rpx;
-  background: #FFFFFF;
-  border-radius: 24rpx;
-  overflow: hidden;
-  box-shadow: 0 8rpx 30rpx rgba(232, 168, 104, 0.1);
-}
-
-.intro-image {
-  width: 100%;
-  height: 400rpx;
-}
-
-.intro-content {
-  padding: 40rpx;
-}
-
-.intro-heading {
-  display: block;
-  font-size: 36rpx;
+  font-size: 48rpx;
   font-weight: 600;
   color: #5D4E37;
   margin-bottom: 20rpx;
 }
 
-.intro-desc {
+.subtitle {
   display: block;
   font-size: 28rpx;
-  color: #666666;
-  line-height: 1.8;
+  color: #999999;
+  line-height: 1.6;
 }
 
-.rooms-preview {
-  padding: 0 30rpx 40rpx;
+.banner-section {
+  padding: 0 30rpx 60rpx;
 }
 
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30rpx;
-  padding: 0 10rpx;
-}
-
-.section-title {
-  font-size: 36rpx;
-  font-weight: 600;
-  color: #5D4E37;
-}
-
-.section-more {
-  font-size: 26rpx;
-  color: #E8A868;
-}
-
-.room-card {
-  background: #FFFFFF;
+.banner-swiper {
+  height: 500rpx;
   border-radius: 24rpx;
   overflow: hidden;
-  margin-bottom: 30rpx;
-  box-shadow: 0 8rpx 30rpx rgba(232, 168, 104, 0.1);
+  box-shadow: 0 8rpx 30rpx rgba(232, 168, 104, 0.15);
 }
 
-.room-image {
+.banner-image {
   width: 100%;
-  height: 350rpx;
+  height: 100%;
 }
 
-.room-info {
-  padding: 30rpx;
+.features-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24rpx;
+  padding: 20rpx 40rpx 60rpx;
 }
 
-.room-name {
+.feature-tag {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 20rpx 32rpx;
+  background: #FFFFFF;
+  border-radius: 50rpx;
+  box-shadow: 0 4rpx 20rpx rgba(232, 168, 104, 0.08);
+}
+
+.tag-icon {
+  font-size: 32rpx;
+}
+
+.tag-text {
+  font-size: 28rpx;
+  color: #5D4E37;
+  font-weight: 500;
+}
+
+.quick-links-section {
+  padding: 0 30rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.link-card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 36rpx 40rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.link-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.link-icon-wrapper {
+  width: 88rpx;
+  height: 88rpx;
+  background: rgba(232, 168, 104, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 24rpx;
+}
+
+.link-icon {
+  font-size: 40rpx;
+}
+
+.link-content {
+  flex: 1;
+}
+
+.link-title {
   display: block;
   font-size: 32rpx;
   font-weight: 600;
   color: #5D4E37;
-  margin-bottom: 12rpx;
+  margin-bottom: 8rpx;
 }
 
-.room-desc {
+.link-desc {
   display: block;
-  font-size: 26rpx;
+  font-size: 24rpx;
   color: #999999;
-  margin-bottom: 20rpx;
 }
 
-.room-tags {
-  display: flex;
-  gap: 16rpx;
-}
-
-.room-tag {
-  padding: 8rpx 24rpx;
-  background: rgba(232, 168, 104, 0.1);
-  border-radius: 30rpx;
-  font-size: 24rpx;
-  color: #E8A868;
-}
-
-.facilities-section {
-  padding: 0 30rpx 40rpx;
-}
-
-.facilities-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24rpx;
-}
-
-.facility-item {
-  background: #FFFFFF;
-  border-radius: 20rpx;
-  padding: 40rpx 20rpx;
-  text-align: center;
-  box-shadow: 0 4rpx 20rpx rgba(232, 168, 104, 0.08);
-}
-
-.facility-icon {
-  display: block;
-  font-size: 48rpx;
-  margin-bottom: 16rpx;
-}
-
-.facility-name {
-  display: block;
-  font-size: 24rpx;
-  color: #666666;
-}
-
-.contact-section {
-  padding: 0 30rpx;
-}
-
-.contact-card {
-  background: linear-gradient(135deg, #E8A868 0%, #D4955A 100%);
-  border-radius: 24rpx;
-  padding: 50rpx 40rpx;
-  text-align: center;
-}
-
-.contact-title {
-  display: block;
+.link-arrow {
   font-size: 36rpx;
-  font-weight: 600;
-  color: #FFFFFF;
-  margin-bottom: 16rpx;
-}
-
-.contact-desc {
-  display: block;
-  font-size: 26rpx;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 30rpx;
-}
-
-.contact-btn {
-  display: inline-block;
-  padding: 20rpx 50rpx;
-  background: #FFFFFF;
-  border-radius: 50rpx;
-  font-size: 28rpx;
-  color: #E8A868;
-  font-weight: 500;
+  color: #CCCCCC;
 }
 </style>

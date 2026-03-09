@@ -16,7 +16,7 @@
 		{
 			"path": "pages/rooms/rooms",
 			"style": {
-				"navigationBarTitleText": "房型"
+				"navigationBarTitleText": "房源详情"
 			}
 		},
 		{
@@ -46,7 +46,7 @@
 			},
 			{
 				"pagePath": "pages/rooms/rooms",
-				"text": "房型",
+				"text": "房源详情",
 				"iconPath": "static/tab-room.png",
 				"selectedIconPath": "static/tab-room-active.png"
 			},
