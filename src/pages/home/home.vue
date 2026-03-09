@@ -226,4 +226,85 @@ const goToContact = () => {
   font-size: 36rpx;
   color: #CCCCCC;
 }
+
+/* 桌面端优化 */
+@media (min-width: 768px) {
+  .home-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+
+  .welcome-section {
+    padding: 40px 20px 30px;
+  }
+
+  .greeting {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .banner-section {
+    padding: 0 20px 40px;
+  }
+
+  .banner-swiper {
+    height: 500px;
+  }
+
+  .banner-image {
+    border-radius: 16px;
+  }
+
+  .features-section {
+    gap: 16px;
+    padding: 20px 20px 40px;
+  }
+
+  .feature-tag {
+    padding: 12px 24px;
+  }
+
+  .tag-icon {
+    font-size: 24px;
+  }
+
+  .tag-text {
+    font-size: 16px;
+  }
+
+  .quick-links-section {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .link-card {
+    padding: 24px 32px;
+  }
+
+  .link-icon-wrapper {
+    width: 64px;
+    height: 64px;
+  }
+
+  .link-icon {
+    font-size: 28px;
+  }
+
+  .link-title {
+    font-size: 20px;
+  }
+
+  .link-desc {
+    font-size: 14px;
+  }
+
+  .link-arrow {
+    font-size: 24px;
+  }
+}
 </style>

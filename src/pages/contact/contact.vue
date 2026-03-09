@@ -218,4 +218,89 @@ const openLocation = () => {
   font-size: 26rpx;
   color: #CCCCCC;
 }
+
+/* 桌面端优化 */
+@media (min-width: 768px) {
+  .contact-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-bottom: 80px;
+  }
+
+  .header-section {
+    padding: 40px 20px 30px;
+  }
+
+  .header-title {
+    font-size: 32px;
+  }
+
+  .header-subtitle {
+    font-size: 18px;
+  }
+
+  .contact-card {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    border-radius: 16px;
+  }
+
+  .contact-item {
+    padding: 28px 32px;
+  }
+
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+
+  .contact-label {
+    font-size: 14px;
+  }
+
+  .contact-value {
+    font-size: 18px;
+  }
+
+  .contact-arrow {
+    font-size: 24px;
+  }
+
+  .booking-section {
+    padding: 0 20px;
+  }
+
+  .booking-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 36px 32px;
+    border-radius: 16px;
+  }
+
+  .booking-title {
+    font-size: 24px;
+  }
+
+  .booking-desc {
+    font-size: 16px;
+  }
+
+  .booking-tags {
+    gap: 12px;
+  }
+
+  .booking-tag {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+
+  .footer-section {
+    padding: 40px 20px 30px;
+  }
+
+  .footer-text {
+    font-size: 14px;
+  }
+}
 </style>

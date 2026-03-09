@@ -512,4 +512,144 @@ const openPurchaseLink = () => {
 .purchase-btn:active {
   opacity: 0.9;
 }
+
+/* 桌面端优化 */
+@media (min-width: 768px) {
+  .rooms-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 60px;
+  }
+
+  .page-header {
+    padding: 40px 20px 30px;
+  }
+
+  .page-title {
+    font-size: 32px;
+  }
+
+  .page-subtitle {
+    font-size: 18px;
+  }
+
+  .section {
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    border-radius: 16px;
+    padding: 32px;
+  }
+
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  /* 地图区域 */
+  .map-title {
+    font-size: 24px;
+  }
+
+  .map-subtitle {
+    font-size: 14px;
+  }
+
+  .map-placeholder {
+    height: 200px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .map-icon {
+    font-size: 48px;
+  }
+
+  .map-text {
+    font-size: 18px;
+  }
+
+  /* 交通指南 */
+  .traffic-title {
+    font-size: 24px;
+  }
+
+  .traffic-item {
+    padding: 20px 0;
+  }
+
+  .traffic-icon {
+    font-size: 28px;
+  }
+
+  .traffic-name {
+    font-size: 18px;
+  }
+
+  .traffic-desc {
+    font-size: 14px;
+  }
+
+  /* 优势标签 */
+  .advantage-tags {
+    gap: 12px;
+  }
+
+  .advantage-tag {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+
+  /* 图片网格 */
+  .group-header {
+    padding: 32px;
+  }
+
+  .group-title {
+    font-size: 24px;
+  }
+
+  .group-subtitle {
+    font-size: 14px;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+    padding: 4px;
+  }
+
+  /* 视频 */
+  .room-video {
+    height: 600px;
+    border-radius: 12px;
+  }
+
+  /* 设施 */
+  .amenities-grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 16px;
+  }
+
+  .amenity-item {
+    padding: 20px 12px;
+  }
+
+  .amenity-icon {
+    font-size: 32px;
+  }
+
+  .amenity-text {
+    font-size: 13px;
+  }
+
+  /* 按钮 */
+  .action-section {
+    padding: 32px;
+  }
+
+  .purchase-btn {
+    height: 56px;
+    font-size: 18px;
+    border-radius: 28px;
+  }
+}
 </style>

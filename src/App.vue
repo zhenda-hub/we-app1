@@ -34,4 +34,29 @@ button {
   width: 0;
   height: 0;
 }
+
+/* 桌面端优化 */
+@media (min-width: 768px) {
+  page {
+    max-width: 1400px;
+    margin: 0 auto;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
+  }
+
+  /* 桌面端显示滚动条 */
+  ::-webkit-scrollbar {
+    display: block;
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(232, 168, 104, 0.3);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(232, 168, 104, 0.5);
+  }
+}
 </style>
