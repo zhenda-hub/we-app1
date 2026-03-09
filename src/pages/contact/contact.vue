@@ -40,50 +40,6 @@
       </view>
     </view>
 
-    <!-- 地图预览 -->
-    <view class="map-section">
-      <view class="map-header">
-        <text class="map-title">位置导航</text>
-        <text class="map-subtitle">点击地图查看详细位置</text>
-      </view>
-
-      <view class="map-placeholder" @tap="openMap">
-        <text class="map-icon">🗺️</text>
-        <text class="map-text">点击打开地图</text>
-      </view>
-    </view>
-
-    <!-- 交通信息 -->
-    <view class="traffic-section">
-      <view class="traffic-header">
-        <text class="traffic-title">交通指南</text>
-      </view>
-
-      <view class="traffic-item">
-        <view class="traffic-icon">🚇</view>
-        <view class="traffic-content">
-          <text class="traffic-name">地铁</text>
-          <text class="traffic-desc">距离XX地铁站约500米，步行5分钟</text>
-        </view>
-      </view>
-
-      <view class="traffic-item">
-        <view class="traffic-icon">🚌</view>
-        <view class="traffic-content">
-          <text class="traffic-name">公交</text>
-          <text class="traffic-desc">多条公交线路可达，XX路站下车</text>
-        </view>
-      </view>
-
-      <view class="traffic-item">
-        <view class="traffic-icon">✈️</view>
-        <view class="traffic-content">
-          <text class="traffic-name">机场</text>
-          <text class="traffic-desc">距离机场约30公里，打车约40分钟</text>
-        </view>
-      </view>
-    </view>
-
     <!-- 预订提示 -->
     <view class="booking-section">
       <view class="booking-card">
@@ -129,10 +85,6 @@ const openLocation = () => {
     name: '温馨民宿',
     address: '某某市某某区某某街道123号'
   })
-}
-
-const openMap = () => {
-  openLocation()
 }
 </script>
 
@@ -215,110 +167,6 @@ const openMap = () => {
   height: 1rpx;
   background: rgba(0, 0, 0, 0.05);
   margin: 0 40rpx;
-}
-
-.map-section {
-  background: #FFFFFF;
-  margin: 0 30rpx 40rpx;
-  border-radius: 24rpx;
-  overflow: hidden;
-  box-shadow: 0 8rpx 30rpx rgba(232, 168, 104, 0.1);
-}
-
-.map-header {
-  padding: 40rpx 40rpx 30rpx;
-}
-
-.map-title {
-  display: block;
-  font-size: 36rpx;
-  font-weight: 600;
-  color: #5D4E37;
-  margin-bottom: 8rpx;
-}
-
-.map-subtitle {
-  display: block;
-  font-size: 24rpx;
-  color: #999999;
-}
-
-.map-placeholder {
-  height: 300rpx;
-  background: linear-gradient(135deg, rgba(232, 168, 104, 0.1) 0%, rgba(212, 149, 90, 0.1) 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.map-icon {
-  font-size: 64rpx;
-  margin-bottom: 16rpx;
-}
-
-.map-text {
-  font-size: 28rpx;
-  color: #E8A868;
-}
-
-.traffic-section {
-  background: #FFFFFF;
-  margin: 0 30rpx 40rpx;
-  border-radius: 24rpx;
-  padding: 40rpx;
-  box-shadow: 0 8rpx 30rpx rgba(232, 168, 104, 0.1);
-}
-
-.traffic-header {
-  margin-bottom: 30rpx;
-}
-
-.traffic-title {
-  font-size: 36rpx;
-  font-weight: 600;
-  color: #5D4E37;
-}
-
-.traffic-item {
-  display: flex;
-  align-items: flex-start;
-  padding: 30rpx 0;
-  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
-}
-
-.traffic-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.traffic-item:first-child {
-  padding-top: 0;
-}
-
-.traffic-icon {
-  font-size: 40rpx;
-  margin-right: 24rpx;
-  margin-top: 4rpx;
-}
-
-.traffic-content {
-  flex: 1;
-}
-
-.traffic-name {
-  display: block;
-  font-size: 30rpx;
-  color: #5D4E37;
-  font-weight: 500;
-  margin-bottom: 8rpx;
-}
-
-.traffic-desc {
-  display: block;
-  font-size: 26rpx;
-  color: #999999;
-  line-height: 1.6;
 }
 
 .booking-section {
