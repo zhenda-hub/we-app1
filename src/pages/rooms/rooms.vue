@@ -122,12 +122,12 @@ const roomInfo = ref({
       title: '1楼',
       subtitle: 'Floor 1',
       images: [
-        '/static/images/floor1/微信图片_20260305182440_128_116.jpg',
-        '/static/images/floor1/微信图片_20260305182444_130_116.jpg',
-        '/static/images/floor1/微信图片_20260305182447_131_116.jpg',
-        '/static/images/floor1/微信图片_20260305182448_132_116.jpg',
-        '/static/images/floor1/微信图片_20260305182450_133_116.jpg',
-        '/static/images/floor1/微信图片_20260305182454_135_116.jpg',
+        'https://picsum.photos/400/400?random=1',
+        'https://picsum.photos/400/400?random=2',
+        'https://picsum.photos/400/400?random=3',
+        'https://picsum.photos/400/400?random=4',
+        'https://picsum.photos/400/400?random=5',
+        'https://picsum.photos/400/400?random=6',
       ]
     },
     {
