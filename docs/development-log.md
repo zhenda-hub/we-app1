@@ -21,51 +21,6 @@ npm install -D sass
 
 ## 目录结构创建
 
-### 创建页面目录
-
-```bash
-# 创建页面目录
-mkdir -p src/pages/home
-mkdir -p src/pages/rooms
-mkdir -p src/pages/contact
-```
-
-### 创建静态资源目录
-
-```bash
-# 创建静态资源目录结构
-mkdir -p src/static/videos
-mkdir -p src/static/images/floor1
-mkdir -p src/static/images/floor2
-mkdir -p src/static/images/bathroom
-mkdir -p src/static/images/banner
-```
-
-## 资源文件整理
-
-### 复制视频文件
-
-```bash
-# 复制视频文件到 static/videos/
-cp ifile/*.mp4 src/static/videos/
-```
-
-### 复制图片文件
-
-```bash
-# 复制1楼图片
-cp ifile/1l/*.jpg src/static/images/floor1/
-
-# 复制2楼图片
-cp ifile/2l/*.jpg src/static/images/floor2/
-
-# 复制卫生间图片
-cp ifile/wc/*.jpg src/static/images/bathroom/
-
-# 复制轮播图（使用1楼图片）
-cp ifile/1l/*.jpg src/static/images/banner/
-```
-
 ### 创建 TabBar 图标占位符
 
 ```bash
@@ -127,23 +82,6 @@ curl -s "http://localhost:5173/static/images/floor1/floor1-01.jpg" -o /tmp/test.
 
 # 测试中文文件名问题
 curl -s "http://localhost:5173/static/images/bathroom/中文文件名.jpg" -o /tmp/test-chinese.jpg && head -3 /tmp/test-chinese.jpg
-```
-
-### Git 调试
-
-```bash
-# 查看当前分支
-git branch --show-current
-
-# 查看提交历史
-git log --oneline -10
-
-# 查看文件改动
-git status
-git diff
-
-# 重置到指定提交（慎用）
-git reset --hard <commit-hash>
 ```
 
 ### 文件操作
