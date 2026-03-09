@@ -62,9 +62,11 @@
 import { ref } from 'vue'
 
 const bannerImages = ref([
-  '/static/images/floor1/微信图片_20260305182440_128_116.jpg',
-  '/static/images/floor1/微信图片_20260305182444_130_116.jpg',
-  '/static/images/floor1/微信图片_20260305182447_131_116.jpg',
+  '/static/images/floor1/floor1-01.jpg',
+  '/static/images/floor1/floor1-02.jpg',
+  '/static/images/floor1/floor1-03.jpg',
+  '/static/images/floor1/floor1-04.jpg',
+  '/static/images/floor1/floor1-05.jpg',
 ])
 
 const features = ref([
