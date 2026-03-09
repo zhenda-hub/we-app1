@@ -98,8 +98,9 @@ pkill -f "npm run dev"
 ### 静态资源处理
 
 **图片文件存放位置**：
-- 本地开发：`src/static/images/`
-- UniApp 会自动处理静态资源
+- **只使用** `src/static/images/`
+- ❌ 不使用 `public/` 目录（已移除）
+- UniApp 会自动处理 `src/static/` 中的静态资源
 
 **图片引用方式**：
 ```vue
@@ -110,9 +111,16 @@ pkill -f "npm run dev"
 <image src="../../static/images/xxx.jpg" />
 ```
 
-**文件命名规范**：
-- ❌ 避免中文文件名（可能导致编码问题）
-- ✅ 使用英文、数字、下划线：`floor1-001.jpg`
+**文件命名规范 - 非常重要**：
+- ❌ **禁止中文文件名**（会导致 H5 模式下 URL 编码问题）
+- ✅ 使用英文、数字、下划线：`floor1-01.jpg`
+
+**中文文件名问题**：
+- **根本原因**：中文文件名在 H5 模式下会进行 URL 编码（如 `%E5%BE%AE%E4%BF%A1...`），导致图片无法正确加载
+- **解决方案**：将所有中文文件名重命名为英文
+- **示例**：
+  - ❌ `微信图片_20260305182440_128_116.jpg`
+  - ✅ `floor1-01.jpg`
 
 ### Git Workflow
 
@@ -196,14 +204,32 @@ const previewImage = (images, index) => {
 
 ## Current Issues & Solutions
 
-### 图片在 H5 模式下不显示
-**问题**: 直接访问图片URL返回网页而非图片
-**原因**: UniApp H5 模式的静态资源处理机制
-**解决**: 使用网络图片URL或重命名文件为英文
+### 中文文件名导致图片无法显示（H5模式）
+**问题**：图片在 H5 浏览器模式下无法显示
+**根本原因**：中文文件名导致 URL 编码问题
+**问题链**：
+1. 中文文件名 → URL 编码（`%E5%BE%AE%E4%BF%A1...`）
+2. 编码后的路径无法正确解析
+3. 图片返回 404 或加载失败
 
-### 中文文件名编码问题
-**问题**: 中文文件名可能导致URL编码问题
-**建议**: 重命名图片文件为英文（如 floor1-01.jpg）
+**解决方案**：
+```bash
+# 重命名图片文件为英文
+mv "微信图片_xxx.jpg" "floor1-01.jpg"
+```
+
+**批量重命名示例**：
+```bash
+# 使用脚本批量重命名
+cd src/static/images/floor1
+counter=1
+for file in 微信图片*.jpg; do
+  mv "$file" "floor1-$(printf '%02d' $counter).jpg"
+  ((counter++))
+done
+```
+
+**预防措施**：从一开始就使用英文文件名命名静态资源
 
 ## Technical Constraints
 
