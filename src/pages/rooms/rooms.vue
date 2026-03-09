@@ -43,22 +43,22 @@
         </view>
       </view>
 
-      <!-- 图片展示 -->
-      <view class="section">
-        <text class="section-title">📷 房源图片</text>
-        <swiper
-          class="gallery-swiper"
-          :indicator-dots="true"
-          :autoplay="false"
-          :interval="5000"
-          :duration="500"
-          indicator-color="rgba(232, 168, 104, 0.3)"
-          indicator-active-color="#E8A868"
-        >
-          <swiper-item v-for="(img, index) in roomInfo.images" :key="index">
-            <image class="gallery-image" :src="img" mode="aspectFill" @tap="previewImage(roomInfo.images, index)" />
-          </swiper-item>
-        </swiper>
+      <!-- 房源图片分组 -->
+      <view class="section image-group-section" v-for="(group, groupIndex) in roomInfo.imageGroups" :key="groupIndex">
+        <view class="group-header">
+          <text class="group-title">{{ group.title }}</text>
+          <text class="group-subtitle">{{ group.subtitle }}</text>
+        </view>
+        <view class="image-grid">
+          <view
+            class="image-item"
+            v-for="(img, imgIndex) in group.images"
+            :key="imgIndex"
+            @tap="previewImage(group.images, imgIndex)"
+          >
+            <image class="grid-image" :src="img" mode="aspectFill" />
+          </view>
+        </view>
       </view>
 
       <!-- 视频展示 -->
@@ -117,16 +117,43 @@ const roomInfo = ref({
     '安静舒适',
     '独立卫浴'
   ],
-  images: [
-    '/static/images/floor1/微信图片_20260305182810_160_116.jpg',
-    '/static/images/floor1/微信图片_20260305182812_161_116.jpg',
-    '/static/images/floor1/微信图片_20260305182808_159_116.jpg',
-    '/static/images/floor1/微信图片_20260305182804_157_116.jpg',
-    '/static/images/floor1/微信图片_20260305182806_158_116.jpg',
-    '/static/images/floor2/微信图片_20260305182310_120_116.jpg',
-    '/static/images/floor2/微信图片_20260305182350_126_116.jpg',
-    '/static/images/bathroom/微信图片_20260305181838_96_116.jpg',
-    '/static/images/bathroom/微信图片_20260305181840_97_116.jpg',
+  imageGroups: [
+    {
+      title: '1楼',
+      subtitle: 'Floor 1',
+      images: [
+        '/static/images/floor1/微信图片_20260305182440_128_116.jpg',
+        '/static/images/floor1/微信图片_20260305182444_130_116.jpg',
+        '/static/images/floor1/微信图片_20260305182447_131_116.jpg',
+        '/static/images/floor1/微信图片_20260305182448_132_116.jpg',
+        '/static/images/floor1/微信图片_20260305182450_133_116.jpg',
+        '/static/images/floor1/微信图片_20260305182454_135_116.jpg',
+      ]
+    },
+    {
+      title: '2楼',
+      subtitle: 'Floor 2',
+      images: [
+        '/static/images/floor2/微信图片_20260305181946_99_116.jpg',
+        '/static/images/floor2/微信图片_20260305181947_100_116.jpg',
+        '/static/images/floor2/微信图片_20260305181950_102_116.jpg',
+        '/static/images/floor2/微信图片_20260305181953_103_116.jpg',
+        '/static/images/floor2/微信图片_20260305181955_104_116.jpg',
+        '/static/images/floor2/微信图片_20260305181956_105_116.jpg',
+      ]
+    },
+    {
+      title: '卫生间',
+      subtitle: 'Bathroom',
+      images: [
+        '/static/images/bathroom/微信图片_20260305181828_91_116.jpg',
+        '/static/images/bathroom/微信图片_20260305181832_93_116.jpg',
+        '/static/images/bathroom/微信图片_20260305181836_95_116.jpg',
+        '/static/images/bathroom/微信图片_20260305181838_96_116.jpg',
+        '/static/images/bathroom/微信图片_20260305181840_97_116.jpg',
+        '/static/images/bathroom/微信图片_20260305181824_89_116.jpg',
+      ]
+    }
   ],
   video: '/static/videos/0ee6398ff4993cb749afc60bf7eaf427.mp4',
   amenities: [
@@ -339,13 +366,45 @@ const openPurchaseLink = () => {
   font-weight: 500;
 }
 
-.gallery-swiper {
-  height: 500rpx;
-  border-radius: 16rpx;
+// 图片分组样式
+.image-group-section {
+  padding: 0;
   overflow: hidden;
 }
 
-.gallery-image {
+.group-header {
+  padding: 40rpx 40rpx 30rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.group-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #5D4E37;
+  margin-bottom: 8rpx;
+}
+
+.group-subtitle {
+  display: block;
+  font-size: 24rpx;
+  color: #999999;
+  text-transform: uppercase;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rpx;
+  padding: 2rpx;
+}
+
+.image-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.grid-image {
   width: 100%;
   height: 100%;
 }
