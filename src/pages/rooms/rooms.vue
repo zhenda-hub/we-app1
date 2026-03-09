@@ -56,7 +56,7 @@
             :key="imgIndex"
             @tap="previewImage(group.images, imgIndex)"
           >
-            <image class="grid-image" :src="img" mode="aspectFill" />
+            <img class="grid-image" :src="img" />
           </view>
         </view>
       </view>
@@ -400,13 +400,21 @@ const openPurchaseLink = () => {
 }
 
 .image-item {
-  aspect-ratio: 1;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%; /* 1:1 宽高比 */
+  position: relative;
   overflow: hidden;
+  background: #f0f0f0; /* 临时背景色，方便调试 */
 }
 
 .grid-image {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .room-video {

@@ -62,11 +62,9 @@
 import { ref } from 'vue'
 
 const bannerImages = ref([
-  '/static/images/banner/微信图片_20260305182810_160_116.jpg',
-  '/static/images/banner/微信图片_20260305182812_161_116.jpg',
-  '/static/images/banner/微信图片_20260305182558_142_116.jpg',
-  '/static/images/banner/微信图片_20260305182602_144_116.jpg',
-  '/static/images/banner/微信图片_20260305182800_155_116.jpg',
+  '/static/images/floor1/微信图片_20260305182440_128_116.jpg',
+  '/static/images/floor1/微信图片_20260305182444_130_116.jpg',
+  '/static/images/floor1/微信图片_20260305182447_131_116.jpg',
 ])
 
 const features = ref([
