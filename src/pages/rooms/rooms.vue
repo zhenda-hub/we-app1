@@ -85,6 +85,23 @@
 <script setup>
 import { ref } from 'vue'
 
+// 自动导入各楼层图片
+const floor1Modules = import.meta.glob('../../static/images/floor1/*.{jpg,png,jpeg}', {
+  eager: true,
+  query: '?url',
+  import: 'default'
+})
+const floor2Modules = import.meta.glob('../../static/images/floor2/*.{jpg,png,jpeg}', {
+  eager: true,
+  query: '?url',
+  import: 'default'
+})
+const bathroomModules = import.meta.glob('../../static/images/bathroom/*.{jpg,png,jpeg}', {
+  eager: true,
+  query: '?url',
+  import: 'default'
+})
+
 const roomInfo = ref({
   location: 'xx区xx街道xx号',
   latitude: 39.90469,
@@ -102,77 +119,17 @@ const roomInfo = ref({
     {
       title: '1楼',
       subtitle: 'Floor 1',
-      images: [
-        '/static/images/floor1/floor1-01.jpg',
-        '/static/images/floor1/floor1-02.jpg',
-        '/static/images/floor1/floor1-03.jpg',
-        '/static/images/floor1/floor1-04.jpg',
-        '/static/images/floor1/floor1-05.jpg',
-        '/static/images/floor1/floor1-06.jpg',
-        '/static/images/floor1/floor1-07.jpg',
-        '/static/images/floor1/floor1-08.jpg',
-        '/static/images/floor1/floor1-09.jpg',
-        '/static/images/floor1/floor1-10.jpg',
-        '/static/images/floor1/floor1-11.jpg',
-        '/static/images/floor1/floor1-12.jpg',
-        '/static/images/floor1/floor1-13.jpg',
-        '/static/images/floor1/floor1-14.jpg',
-        '/static/images/floor1/floor1-15.jpg',
-        '/static/images/floor1/floor1-16.jpg',
-        '/static/images/floor1/floor1-17.jpg',
-        '/static/images/floor1/floor1-18.jpg',
-        '/static/images/floor1/floor1-19.jpg',
-        '/static/images/floor1/floor1-20.jpg',
-        '/static/images/floor1/floor1-21.jpg',
-        '/static/images/floor1/floor1-22.jpg',
-        '/static/images/floor1/floor1-23.jpg',
-        '/static/images/floor1/floor1-24.jpg',
-        '/static/images/floor1/floor1-25.jpg',
-        '/static/images/floor1/floor1-26.jpg',
-        '/static/images/floor1/floor1-27.jpg',
-        '/static/images/floor1/floor1-28.jpg',
-        '/static/images/floor1/floor1-29.jpg',
-        '/static/images/floor1/floor1-30.jpg',
-        '/static/images/floor1/floor1-31.jpg',
-        '/static/images/floor1/floor1-32.jpg',
-      ]
+      images: Object.values(floor1Modules).sort()
     },
     {
       title: '2楼',
       subtitle: 'Floor 2',
-      images: [
-        '/static/images/floor2/floor2-01.jpg',
-        '/static/images/floor2/floor2-02.jpg',
-        '/static/images/floor2/floor2-03.jpg',
-        '/static/images/floor2/floor2-04.jpg',
-        '/static/images/floor2/floor2-05.jpg',
-        '/static/images/floor2/floor2-06.jpg',
-        '/static/images/floor2/floor2-07.jpg',
-        '/static/images/floor2/floor2-08.jpg',
-        '/static/images/floor2/floor2-09.jpg',
-        '/static/images/floor2/floor2-10.jpg',
-        '/static/images/floor2/floor2-11.jpg',
-        '/static/images/floor2/floor2-12.jpg',
-        '/static/images/floor2/floor2-13.jpg',
-        '/static/images/floor2/floor2-14.jpg',
-        '/static/images/floor2/floor2-15.jpg',
-        '/static/images/floor2/floor2-16.jpg',
-        '/static/images/floor2/floor2-17.jpg',
-        '/static/images/floor2/floor2-18.jpg',
-        '/static/images/floor2/floor2-19.jpg',
-        '/static/images/floor2/floor2-20.jpg',
-        '/static/images/floor2/floor2-21.jpg',
-      ]
+      images: Object.values(floor2Modules).sort()
     },
     {
       title: '卫生间',
       subtitle: 'Bathroom',
-      images: [
-        '/static/images/bathroom/bathroom-01.jpg',
-        '/static/images/bathroom/bathroom-02.jpg',
-        '/static/images/bathroom/bathroom-03.jpg',
-        '/static/images/bathroom/bathroom-04.jpg',
-      ]
+      images: Object.values(bathroomModules).sort()
     }
   ],
   video: '/static/videos/0ee6398ff4993cb749afc60bf7eaf427.mp4',
