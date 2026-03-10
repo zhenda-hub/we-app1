@@ -27,17 +27,6 @@
         </view>
         <text class="contact-arrow">→</text>
       </view>
-
-      <view class="contact-divider"></view>
-
-      <view class="contact-item" @tap="openLocation">
-        <view class="contact-icon">📍</view>
-        <view class="contact-info">
-          <text class="contact-label">详细地址</text>
-          <text class="contact-value">某某市某某区某某街道123号</text>
-        </view>
-        <text class="contact-arrow">→</text>
-      </view>
     </view>
 
     <!-- 预订提示 -->
@@ -75,15 +64,6 @@ const copyWechat = () => {
         icon: 'success'
       })
     }
-  })
-}
-
-const openLocation = () => {
-  uni.openLocation({
-    latitude: 39.90469,
-    longitude: 116.40717,
-    name: '温馨民宿',
-    address: '某某市某某区某某街道123号'
   })
 }
 </script>
