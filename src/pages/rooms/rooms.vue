@@ -43,6 +43,17 @@
         </view>
       </view>
 
+      <!-- 设施清单 -->
+      <view class="section">
+        <text class="section-title">🛠 房屋设施</text>
+        <view class="amenities-grid">
+          <view class="amenity-item" v-for="(item, index) in roomInfo.amenities" :key="index">
+            <text class="amenity-icon">{{ item.icon }}</text>
+            <text class="amenity-text">{{ item.text }}</text>
+          </view>
+        </view>
+      </view>
+
       <!-- 房源图片分组 -->
       <view class="section image-group-section" v-for="(group, groupIndex) in roomInfo.imageGroups" :key="groupIndex">
         <view class="group-header">
@@ -73,17 +84,6 @@
           :show-center-play-btn="true"
           objectFit="contain"
         ></video>
-      </view>
-
-      <!-- 设施清单 -->
-      <view class="section">
-        <text class="section-title">🛠 房屋设施</text>
-        <view class="amenities-grid">
-          <view class="amenity-item" v-for="(item, index) in roomInfo.amenities" :key="index">
-            <text class="amenity-icon">{{ item.icon }}</text>
-            <text class="amenity-text">{{ item.text }}</text>
-          </view>
-        </view>
       </view>
 
       <!-- 购房链接 -->
