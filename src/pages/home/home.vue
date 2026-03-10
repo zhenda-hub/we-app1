@@ -61,13 +61,22 @@
 <script setup>
 import { ref } from 'vue'
 
-const bannerImages = ref([
-  '/static/images/floor1/floor1-01.jpg',
-  '/static/images/floor1/floor1-02.jpg',
-  '/static/images/floor1/floor1-03.jpg',
-  '/static/images/floor1/floor1-04.jpg',
-  '/static/images/floor1/floor1-05.jpg',
-])
+// 自动导入 banner 目录下所有 .jpg 和 .png 图片
+const bannerModules = import.meta.glob('../../static/images/banner/*.{jpg,png,jpeg}', {
+  eager: true,
+  query: '?url',
+  import: 'default'
+})
+
+// 提取图片路径并排序（按文件名字母顺序）
+const bannerImages = ref(
+  Object.values(bannerModules).sort()
+)
+
+// 如果 banner 目录为空，使用默认图片
+if (bannerImages.value.length === 0) {
+  bannerImages.value = ['/static/images/floor1/floor1-01.jpg']
+}
 
 const features = ref([
   { icon: '🚇', text: '近地铁' },
