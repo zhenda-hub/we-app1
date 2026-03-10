@@ -19,20 +19,6 @@
         </view>
       </view>
 
-      <!-- 交通指南 -->
-      <view class="section traffic-section">
-        <view class="traffic-header">
-          <text class="traffic-title">交通指南</text>
-        </view>
-        <view class="traffic-item" v-for="(item, index) in roomInfo.traffic" :key="index">
-          <view class="traffic-icon">{{ item.icon }}</view>
-          <view class="traffic-content">
-            <text class="traffic-name">{{ item.name }}</text>
-            <text class="traffic-desc">{{ item.desc }}</text>
-          </view>
-        </view>
-      </view>
-
       <!-- 核心优势 -->
       <view class="section">
         <text class="section-title">⭐ 核心优势</text>
@@ -104,11 +90,6 @@ const roomInfo = ref({
   latitude: 39.90469,
   longitude: 116.40717,
   name: '温馨民宿',
-  traffic: [
-    { icon: '🚇', name: '地铁', desc: '距离XX地铁站约500米，步行5分钟' },
-    { icon: '🚌', name: '公交', desc: '多条公交线路可达，XX路站下车' },
-    { icon: '✈️', name: '机场', desc: '距离机场约30公里，打车约40分钟' },
-  ],
   advantages: [
     '近地铁',
     '独立出入',
@@ -334,62 +315,6 @@ const openPurchaseLink = () => {
   color: #E8A868;
 }
 
-// 交通指南样式
-.traffic-section {
-  padding: 40rpx;
-}
-
-.traffic-header {
-  margin-bottom: 30rpx;
-}
-
-.traffic-title {
-  font-size: 36rpx;
-  font-weight: 600;
-  color: #5D4E37;
-}
-
-.traffic-item {
-  display: flex;
-  align-items: flex-start;
-  padding: 30rpx 0;
-  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
-}
-
-.traffic-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.traffic-item:first-child {
-  padding-top: 0;
-}
-
-.traffic-icon {
-  font-size: 40rpx;
-  margin-right: 24rpx;
-  margin-top: 4rpx;
-}
-
-.traffic-content {
-  flex: 1;
-}
-
-.traffic-name {
-  display: block;
-  font-size: 30rpx;
-  color: #5D4E37;
-  font-weight: 500;
-  margin-bottom: 8rpx;
-}
-
-.traffic-desc {
-  display: block;
-  font-size: 26rpx;
-  color: #999999;
-  line-height: 1.6;
-}
-
 .advantage-tags {
   display: flex;
   flex-wrap: wrap;
@@ -565,27 +490,6 @@ const openPurchaseLink = () => {
 
   .map-text {
     font-size: 18px;
-  }
-
-  /* 交通指南 */
-  .traffic-title {
-    font-size: 24px;
-  }
-
-  .traffic-item {
-    padding: 20px 0;
-  }
-
-  .traffic-icon {
-    font-size: 28px;
-  }
-
-  .traffic-name {
-    font-size: 18px;
-  }
-
-  .traffic-desc {
-    font-size: 14px;
   }
 
   /* 优势标签 */
