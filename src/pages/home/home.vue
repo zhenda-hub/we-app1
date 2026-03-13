@@ -61,21 +61,27 @@
 <script setup>
 import { ref } from 'vue'
 
-// 自动导入 banner 目录下所有 .jpg 和 .png 图片
+// GitHub raw 链接（支持小程序预览）
+const githubRawBase = 'https://raw.githubusercontent.com/zhenda-hub/we-app1/main/src/static'
+
+// 自动导入 banner 图片并转换为 GitHub raw 链接
 const bannerModules = import.meta.glob('../../static/images/banner/*.{jpg,png,jpeg}', {
-  eager: true,
-  query: '?url',
-  import: 'default'
+  eager: true
 })
 
-// 提取图片路径并排序（按文件名字母顺序）
-const bannerImages = ref(
-  Object.values(bannerModules).sort()
-)
+// 将本地文件路径转换为 GitHub raw 链接
+const toGitHubUrls = (modules) => {
+  return Object.keys(modules)
+    .map(path => path.split('/').pop())
+    .sort()
+    .map(filename => `${githubRawBase}/images/banner/${filename}`)
+}
+
+const bannerImages = ref(toGitHubUrls(bannerModules))
 
 // 如果 banner 目录为空，使用默认图片
 if (bannerImages.value.length === 0) {
-  bannerImages.value = ['/static/images/floor1/floor1-01.jpg']
+  bannerImages.value = [`${githubRawBase}/images/floor1/floor1-01.jpg`]
 }
 
 const features = ref([

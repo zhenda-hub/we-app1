@@ -53,22 +53,20 @@
             :key="imgIndex"
             @tap="previewImage(group.images, imgIndex)"
           >
-            <img class="grid-image" :src="img" />
+            <image class="grid-image" :src="img" mode="aspectFill" />
           </view>
         </view>
       </view>
 
       <!-- 视频展示 -->
-      <view class="section" v-if="roomInfo.video">
+      <view class="section">
         <text class="section-title">🎬 视频展示</text>
         <video
           class="room-video"
-          :src="roomInfo.video"
-          :controls="true"
+          :src="`${githubRawBase}/videos/0ee6398ff4993cb749afc60bf7eaf427_h264.mp4`"
+          controls
           :autoplay="false"
-          :show-play-btn="true"
-          :show-center-play-btn="true"
-          objectFit="contain"
+          object-fit="contain"
         ></video>
       </view>
 
@@ -85,23 +83,23 @@
 <script setup>
 import { ref } from 'vue'
 
-// 自动导入各楼层图片
-const floor1Modules = import.meta.glob('../../static/images/floor1/*.{jpg,png,jpeg}', {
-  eager: true,
-  query: '?url',
-  import: 'default'
-})
-const floor2Modules = import.meta.glob('../../static/images/floor2/*.{jpg,png,jpeg}', {
-  eager: true,
-  query: '?url',
-  import: 'default'
-})
-const bathroomModules = import.meta.glob('../../static/images/bathroom/*.{jpg,png,jpeg}', {
-  eager: true,
-  query: '?url',
-  import: 'default'
-})
+// GitHub raw 链接（支持小程序预览）
+const githubRawBase = 'https://raw.githubusercontent.com/zhenda-hub/we-app1/main/src/static'
 
+// 自动导入本地图片文件名
+const floor1Modules = import.meta.glob('../../static/images/floor1/*.jpg', { eager: true })
+const floor2Modules = import.meta.glob('../../static/images/floor2/*.jpg', { eager: true })
+const bathroomModules = import.meta.glob('../../static/images/bathroom/*.jpg', { eager: true })
+
+// 将本地文件路径转换为 GitHub raw 链接
+const toGitHubUrls = (modules, folder) => {
+  return Object.keys(modules)
+    .map(path => path.split('/').pop())
+    .sort()
+    .map(filename => `${githubRawBase}/images/${folder}/${filename}`)
+}
+
+// 精选图片（使用 GitHub raw 链接，支持小程序预览）
 const roomInfo = ref({
   location: 'xx区xx街道xx号',
   latitude: 39.90469,
@@ -119,20 +117,19 @@ const roomInfo = ref({
     {
       title: '1楼',
       subtitle: 'Floor 1',
-      images: Object.values(floor1Modules).sort()
+      images: toGitHubUrls(floor1Modules, 'floor1')
     },
     {
       title: '2楼',
       subtitle: 'Floor 2',
-      images: Object.values(floor2Modules).sort()
+      images: toGitHubUrls(floor2Modules, 'floor2')
     },
     {
       title: '卫生间',
       subtitle: 'Bathroom',
-      images: Object.values(bathroomModules).sort()
+      images: toGitHubUrls(bathroomModules, 'bathroom')
     }
   ],
-  video: '/static/videos/0ee6398ff4993cb749afc60bf7eaf427.mp4',
   amenities: [
     { icon: '📶', text: '免费WiFi' },
     { icon: '🚿', text: '独立卫浴' },
