@@ -63,7 +63,7 @@
         <text class="section-title">🎬 视频展示</text>
         <video
           class="room-video"
-          :src="`${githubRawBase}/videos/0ee6398ff4993cb749afc60bf7eaf427_h264.mp4`"
+          :src="`${giteeRawBase}/videos/0ee6398ff4993cb749afc60bf7eaf427_h264.mp4`"
           controls
           :autoplay="false"
           object-fit="contain"
@@ -83,20 +83,20 @@
 <script setup>
 import { ref } from 'vue'
 
-// GitHub raw 链接（支持小程序预览）
-const githubRawBase = 'https://raw.githubusercontent.com/zhenda-hub/we-app1/main/src/static'
+// Gitee raw 链接（国内访问速度快）
+const giteeRawBase = 'https://gitee.com/zhenda/we-app1/raw/main/src/static'
 
 // 自动导入本地图片文件名
 const floor1Modules = import.meta.glob('../../static/images/floor1/*.jpg', { eager: true })
 const floor2Modules = import.meta.glob('../../static/images/floor2/*.jpg', { eager: true })
 const bathroomModules = import.meta.glob('../../static/images/bathroom/*.jpg', { eager: true })
 
-// 将本地文件路径转换为 GitHub raw 链接
-const toGitHubUrls = (modules, folder) => {
+// 将本地文件路径转换为 Gitee raw 链接
+const toGiteeUrls = (modules, folder) => {
   return Object.keys(modules)
     .map(path => path.split('/').pop())
     .sort()
-    .map(filename => `${githubRawBase}/images/${folder}/${filename}`)
+    .map(filename => `${giteeRawBase}/images/${folder}/${filename}`)
 }
 
 // 精选图片（使用 GitHub raw 链接，支持小程序预览）
@@ -117,17 +117,17 @@ const roomInfo = ref({
     {
       title: '1楼',
       subtitle: 'Floor 1',
-      images: toGitHubUrls(floor1Modules, 'floor1')
+      images: toGiteeUrls(floor1Modules, 'floor1')
     },
     {
       title: '2楼',
       subtitle: 'Floor 2',
-      images: toGitHubUrls(floor2Modules, 'floor2')
+      images: toGiteeUrls(floor2Modules, 'floor2')
     },
     {
       title: '卫生间',
       subtitle: 'Bathroom',
-      images: toGitHubUrls(bathroomModules, 'bathroom')
+      images: toGiteeUrls(bathroomModules, 'bathroom')
     }
   ],
   amenities: [

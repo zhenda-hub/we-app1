@@ -61,27 +61,27 @@
 <script setup>
 import { ref } from 'vue'
 
-// GitHub raw 链接（支持小程序预览）
-const githubRawBase = 'https://raw.githubusercontent.com/zhenda-hub/we-app1/main/src/static'
+// Gitee raw 链接（国内访问速度快）
+const giteeRawBase = 'https://gitee.com/zhenda/we-app1/raw/main/src/static'
 
-// 自动导入 banner 图片并转换为 GitHub raw 链接
+// 自动导入 banner 图片并转换为 Gitee raw 链接
 const bannerModules = import.meta.glob('../../static/images/banner/*.{jpg,png,jpeg}', {
   eager: true
 })
 
-// 将本地文件路径转换为 GitHub raw 链接
-const toGitHubUrls = (modules) => {
+// 将本地文件路径转换为 Gitee raw 链接
+const toGiteeUrls = (modules) => {
   return Object.keys(modules)
     .map(path => path.split('/').pop())
     .sort()
-    .map(filename => `${githubRawBase}/images/banner/${filename}`)
+    .map(filename => `${giteeRawBase}/images/banner/${filename}`)
 }
 
-const bannerImages = ref(toGitHubUrls(bannerModules))
+const bannerImages = ref(toGiteeUrls(bannerModules))
 
 // 如果 banner 目录为空，使用默认图片
 if (bannerImages.value.length === 0) {
-  bannerImages.value = [`${githubRawBase}/images/floor1/floor1-01.jpg`]
+  bannerImages.value = [`${giteeRawBase}/images/floor1/floor1-01.jpg`]
 }
 
 const features = ref([
