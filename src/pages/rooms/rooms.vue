@@ -63,7 +63,7 @@
         <text class="section-title">🎬 视频展示</text>
         <video
           class="room-video"
-          :src="`${giteeRawBase}/videos/0ee6398ff4993cb749afc60bf7eaf427_h264.mp4`"
+          :src="`${cdnBase}/videos/0ee6398ff4993cb749afc60bf7eaf427_h264.mp4`"
           controls
           :autoplay="false"
           object-fit="contain"
@@ -83,20 +83,20 @@
 <script setup>
 import { ref } from 'vue'
 
-// Gitee raw 链接（国内访问速度快）
-const giteeRawBase = 'https://gitee.com/zhenda/we-app1/raw/main/src/static'
+// jsDelivr CDN 加速 GitHub（国内访问快）
+const cdnBase = 'https://cdn.jsdelivr.net/gh/zhenda-hub/we-app1@main/src/static'
 
 // 自动导入本地图片文件名
 const floor1Modules = import.meta.glob('../../static/images/floor1/*.jpg', { eager: true })
 const floor2Modules = import.meta.glob('../../static/images/floor2/*.jpg', { eager: true })
 const bathroomModules = import.meta.glob('../../static/images/bathroom/*.jpg', { eager: true })
 
-// 将本地文件路径转换为 Gitee raw 链接
-const toGiteeUrls = (modules, folder) => {
+// 将本地文件路径转换为 CDN 链接
+const toCdnUrls = (modules, folder) => {
   return Object.keys(modules)
     .map(path => path.split('/').pop())
     .sort()
-    .map(filename => `${giteeRawBase}/images/${folder}/${filename}`)
+    .map(filename => `${cdnBase}/images/${folder}/${filename}`)
 }
 
 // 精选图片（使用 GitHub raw 链接，支持小程序预览）
@@ -117,17 +117,17 @@ const roomInfo = ref({
     {
       title: '1楼',
       subtitle: 'Floor 1',
-      images: toGiteeUrls(floor1Modules, 'floor1')
+      images: toCdnUrls(floor1Modules, 'floor1')
     },
     {
       title: '2楼',
       subtitle: 'Floor 2',
-      images: toGiteeUrls(floor2Modules, 'floor2')
+      images: toCdnUrls(floor2Modules, 'floor2')
     },
     {
       title: '卫生间',
       subtitle: 'Bathroom',
-      images: toGiteeUrls(bathroomModules, 'bathroom')
+      images: toCdnUrls(bathroomModules, 'bathroom')
     }
   ],
   amenities: [

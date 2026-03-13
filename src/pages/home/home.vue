@@ -61,27 +61,27 @@
 <script setup>
 import { ref } from 'vue'
 
-// Gitee raw 链接（国内访问速度快）
-const giteeRawBase = 'https://gitee.com/zhenda/we-app1/raw/main/src/static'
+// jsDelivr CDN 加速 GitHub（国内访问快）
+const cdnBase = 'https://cdn.jsdelivr.net/gh/zhenda-hub/we-app1@main/src/static'
 
-// 自动导入 banner 图片并转换为 Gitee raw 链接
+// 自动导入 banner 图片并转换为 CDN 链接
 const bannerModules = import.meta.glob('../../static/images/banner/*.{jpg,png,jpeg}', {
   eager: true
 })
 
-// 将本地文件路径转换为 Gitee raw 链接
-const toGiteeUrls = (modules) => {
+// 将本地文件路径转换为 CDN 链接
+const toCdnUrls = (modules) => {
   return Object.keys(modules)
     .map(path => path.split('/').pop())
     .sort()
-    .map(filename => `${giteeRawBase}/images/banner/${filename}`)
+    .map(filename => `${cdnBase}/images/banner/${filename}`)
 }
 
-const bannerImages = ref(toGiteeUrls(bannerModules))
+const bannerImages = ref(toCdnUrls(bannerModules))
 
 // 如果 banner 目录为空，使用默认图片
 if (bannerImages.value.length === 0) {
-  bannerImages.value = [`${giteeRawBase}/images/floor1/floor1-01.jpg`]
+  bannerImages.value = [`${cdnBase}/images/floor1/floor1-01.jpg`]
 }
 
 const features = ref([
