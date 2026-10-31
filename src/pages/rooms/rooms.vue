@@ -104,7 +104,7 @@ const roomInfo = ref({
   location: 'xx区xx街道xx号',
   latitude: 39.90469,
   longitude: 116.40717,
-  name: '温馨民宿',
+  name: '童话森林里民宿',
   advantages: [
     '近地铁',
     '独立出入',
@@ -135,7 +135,7 @@ const roomInfo = ref({
     { icon: '🚿', text: '独立卫浴' },
     { icon: '❄️', text: '空调' },
     { icon: '🍳', text: '可做饭' },
-    { icon: '🧹', text: '每日清洁' },
+    { icon: '🌿', text: '暖心绿植' },
     { icon: '🚇', text: '近地铁' },
     { icon: '📺', text: '电视' },
     { icon: '🧴', text: '洗漱用品' },

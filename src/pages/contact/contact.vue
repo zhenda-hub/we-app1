@@ -12,7 +12,7 @@
         <view class="contact-icon">📞</view>
         <view class="contact-info">
           <text class="contact-label">电话咨询</text>
-          <text class="contact-value">138-0000-0000</text>
+          <text class="contact-value">136-7128-8948</text>
         </view>
         <text class="contact-arrow">→</text>
       </view>
@@ -51,7 +51,7 @@
 <script setup>
 const makeCall = () => {
   uni.makePhoneCall({
-    phoneNumber: '13800000000'
+    phoneNumber: '13671288948'
   })
 }
 
