@@ -2,7 +2,7 @@
   <view class="home-page">
     <!-- 顶部欢迎区 -->
     <view class="welcome-section">
-      <text class="greeting">欢迎光临</text>
+      <text class="greeting">童话森林里民宿</text>
       <text class="subtitle">温馨舒适的家园，优质房源值得拥有</text>
     </view>
 
@@ -31,30 +31,6 @@
       </view>
     </view>
 
-    <!-- 快捷入口 -->
-    <view class="quick-links-section">
-      <view class="link-card" @tap="goToRooms">
-        <view class="link-icon-wrapper">
-          <text class="link-icon">🏠</text>
-        </view>
-        <view class="link-content">
-          <text class="link-title">房源详情</text>
-          <text class="link-desc">查看位置、设施等信息</text>
-        </view>
-        <text class="link-arrow">→</text>
-      </view>
-
-      <view class="link-card" @tap="goToContact">
-        <view class="link-icon-wrapper">
-          <text class="link-icon">📞</text>
-        </view>
-        <view class="link-content">
-          <text class="link-title">联系我们</text>
-          <text class="link-desc">获取更多咨询</text>
-        </view>
-        <text class="link-arrow">→</text>
-      </view>
-    </view>
   </view>
 </template>
 
@@ -98,17 +74,6 @@ const previewImage = (images, index) => {
   })
 }
 
-const goToRooms = () => {
-  uni.switchTab({
-    url: '/pages/rooms/rooms'
-  })
-}
-
-const goToContact = () => {
-  uni.switchTab({
-    url: '/pages/contact/contact'
-  })
-}
 </script>
 
 <style lang="scss" scoped>
@@ -182,66 +147,6 @@ const goToContact = () => {
   font-weight: 500;
 }
 
-.quick-links-section {
-  padding: 0 30rpx;
-  display: flex;
-  flex-direction: column;
-  gap: 30rpx;
-}
-
-.link-card {
-  background: #FFFFFF;
-  border-radius: 24rpx;
-  padding: 36rpx 40rpx;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.link-card:active {
-  transform: scale(0.98);
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
-}
-
-.link-icon-wrapper {
-  width: 88rpx;
-  height: 88rpx;
-  background: rgba(232, 168, 104, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 24rpx;
-}
-
-.link-icon {
-  font-size: 40rpx;
-}
-
-.link-content {
-  flex: 1;
-}
-
-.link-title {
-  display: block;
-  font-size: 32rpx;
-  font-weight: 600;
-  color: #5D4E37;
-  margin-bottom: 8rpx;
-}
-
-.link-desc {
-  display: block;
-  font-size: 24rpx;
-  color: #999999;
-}
-
-.link-arrow {
-  font-size: 36rpx;
-  color: #CCCCCC;
-}
-
 /* 桌面端优化 */
 @media (min-width: 768px) {
   .home-page {
@@ -292,34 +197,5 @@ const goToContact = () => {
     font-size: 16px;
   }
 
-  .quick-links-section {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .link-card {
-    padding: 24px 32px;
-  }
-
-  .link-icon-wrapper {
-    width: 64px;
-    height: 64px;
-  }
-
-  .link-icon {
-    font-size: 28px;
-  }
-
-  .link-title {
-    font-size: 20px;
-  }
-
-  .link-desc {
-    font-size: 14px;
-  }
-
-  .link-arrow {
-    font-size: 24px;
-  }
 }
 </style>
